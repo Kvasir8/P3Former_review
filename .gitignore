@@ -1,2 +1,2 @@
-data/
-pretrain_weight/
+data/*
+pretrain_weight/*
