@@ -1,3 +1,6 @@
+# Instance segmentation
+Latest debugging history is located: P3Former_review/work_dirs/p3former_8xb2_3x_semantickitti_trainval/20230627_165455/20230627_165455.log
+
 # P3Former: Position-Guided Point Cloud Panoptic Segmentation Transformer
 
 ![main figure](https://user-images.githubusercontent.com/45515569/227226959-35f887e0-453b-4ac8-81c0-cb4b2f79333c.png)
