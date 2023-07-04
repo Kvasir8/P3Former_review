@@ -716,19 +716,14 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(type='CheckpointHook', interval=5),
     sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(
-        type='Det3DVisualizationHook',
-        draw=True,
-        show=True,
-        wait_time=2,
-        vis_task=None))
+    visualization=dict(type='Det3DVisualizationHook'))
 env_cfg = dict(
     cudnn_benchmark=False,
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0),
     dist_cfg=dict(backend='nccl'))
 log_processor = dict(type='LogProcessor', window_size=50, by_epoch=True)
 log_level = 'INFO'
-load_from = 'pretrain_weight/semantickitti_test_65.3.pth'
+load_from = 'pretrained_weight/semantickitti_test_65.3.pth'
 resume = False
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=36, val_interval=1)
 val_cfg = dict(type='ValLoop')

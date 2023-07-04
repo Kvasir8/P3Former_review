@@ -1,3 +1,44 @@
+2023/07/04 15:17:10 - mmengine - INFO - 
+------------------------------------------------------------
+System environment:
+    sys.platform: linux
+    Python: 3.8.0 (default, Nov  6 2019, 21:49:08) [GCC 7.3.0]
+    CUDA available: True
+    numpy_random_seed: 1431020514
+    GPU 0: NVIDIA GeForce RTX 3080
+    CUDA_HOME: None
+    GCC: gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+    PyTorch: 1.10.1+cu111
+    PyTorch compiling details: PyTorch built with:
+  - GCC 7.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.2.3 (Git Hash 7336ca9f055cf1bfa13efb658fe15dc9b41f0740)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX512
+  - CUDA Runtime 11.1
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.0.5
+  - Magma 2.5.2
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.1, CUDNN_VERSION=8.0.5, CXX_COMPILER=/opt/rh/devtoolset-7/root/usr/bin/c++, CXX_FLAGS= -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -Wno-unused-result -Wno-unused-local-typedefs -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.10.1, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, 
+
+    TorchVision: 0.11.2+cu111
+    OpenCV: 4.8.0
+    MMEngine: 0.7.4
+
+Runtime environment:
+    cudnn_benchmark: False
+    mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
+    dist_cfg: {'backend': 'nccl'}
+    seed: 1431020514
+    Distributed launcher: pytorch
+    Distributed training: True
+    GPU number: 1
+------------------------------------------------------------
+
+2023/07/04 15:17:13 - mmengine - INFO - Config:
 dataset_type = '_SemanticKittiDataset'
 data_root = '/home/han/data/semantickitti/'
 class_names = [
@@ -716,19 +757,14 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(type='CheckpointHook', interval=5),
     sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(
-        type='Det3DVisualizationHook',
-        draw=True,
-        show=True,
-        wait_time=2,
-        vis_task=None))
+    visualization=dict(type='Det3DVisualizationHook'))
 env_cfg = dict(
     cudnn_benchmark=False,
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0),
     dist_cfg=dict(backend='nccl'))
 log_processor = dict(type='LogProcessor', window_size=50, by_epoch=True)
 log_level = 'INFO'
-load_from = 'pretrain_weight/semantickitti_test_65.3.pth'
+load_from = 'pretrained_weight/semantickitti_test_65.3.pth'
 resume = False
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=36, val_interval=1)
 val_cfg = dict(type='ValLoop')
@@ -759,3 +795,132 @@ custom_imports = dict(
     allow_failed_imports=False)
 launcher = 'pytorch'
 work_dir = './work_dirs/p3former_8xb2_3x_semantickitti_trainval'
+
+2023/07/04 15:17:21 - mmengine - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+before_train:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) DistSamplerSeedHook                
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_train_iter:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) IterTimerHook                      
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_val_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_val_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) Det3DVisualizationHook             
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_val_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+(LOW         ) ParamSchedulerHook                 
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+after_train:
+(VERY_LOW    ) CheckpointHook                     
+ -------------------- 
+before_test_epoch:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+before_test_iter:
+(NORMAL      ) IterTimerHook                      
+ -------------------- 
+after_test_iter:
+(NORMAL      ) IterTimerHook                      
+(NORMAL      ) Det3DVisualizationHook             
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_test_epoch:
+(VERY_HIGH   ) RuntimeInfoHook                    
+(NORMAL      ) IterTimerHook                      
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+after_run:
+(BELOW_NORMAL) LoggerHook                         
+ -------------------- 
+2023/07/04 15:17:24 - mmengine - WARNING - The prefix is not set in metric class _PanopticSegMetric.
+2023/07/04 15:17:28 - mmengine - INFO - Load checkpoint from pretrained_weight/semantickitti_test_65.3.pth
+2023/07/04 15:17:35 - mmengine - INFO - Epoch(test) [  50/4071]    eta: 0:10:06  time: 0.1509  data_time: 0.0092  memory: 1203  
+2023/07/04 15:17:43 - mmengine - INFO - Epoch(test) [ 100/4071]    eta: 0:09:52  time: 0.1473  data_time: 0.0078  memory: 1208  
+2023/07/04 15:17:50 - mmengine - INFO - Epoch(test) [ 150/4071]    eta: 0:09:31  time: 0.1391  data_time: 0.0078  memory: 1210  
+2023/07/04 15:17:57 - mmengine - INFO - Epoch(test) [ 200/4071]    eta: 0:09:18  time: 0.1396  data_time: 0.0077  memory: 1207  
+2023/07/04 15:18:04 - mmengine - INFO - Epoch(test) [ 250/4071]    eta: 0:09:08  time: 0.1411  data_time: 0.0078  memory: 1220  
+2023/07/04 15:18:11 - mmengine - INFO - Epoch(test) [ 300/4071]    eta: 0:09:00  time: 0.1414  data_time: 0.0080  memory: 1239  
+2023/07/04 15:18:18 - mmengine - INFO - Epoch(test) [ 350/4071]    eta: 0:08:53  time: 0.1440  data_time: 0.0080  memory: 1233  
+2023/07/04 15:18:25 - mmengine - INFO - Epoch(test) [ 400/4071]    eta: 0:08:44  time: 0.1391  data_time: 0.0081  memory: 1230  
+2023/07/04 15:18:32 - mmengine - INFO - Epoch(test) [ 450/4071]    eta: 0:08:37  time: 0.1433  data_time: 0.0080  memory: 1221  
+2023/07/04 15:18:39 - mmengine - INFO - Epoch(test) [ 500/4071]    eta: 0:08:26  time: 0.1323  data_time: 0.0079  memory: 1169  
+2023/07/04 15:18:45 - mmengine - INFO - Epoch(test) [ 550/4071]    eta: 0:08:12  time: 0.1193  data_time: 0.0078  memory: 1154  
+2023/07/04 15:18:50 - mmengine - INFO - Epoch(test) [ 600/4071]    eta: 0:07:57  time: 0.1131  data_time: 0.0073  memory: 1051  
+2023/07/04 15:18:56 - mmengine - INFO - Epoch(test) [ 650/4071]    eta: 0:07:43  time: 0.1114  data_time: 0.0077  memory: 1062  
+2023/07/04 15:19:02 - mmengine - INFO - Epoch(test) [ 700/4071]    eta: 0:07:33  time: 0.1208  data_time: 0.0079  memory: 1135  
+2023/07/04 15:19:08 - mmengine - INFO - Epoch(test) [ 750/4071]    eta: 0:07:26  time: 0.1319  data_time: 0.0080  memory: 1161  
+2023/07/04 15:19:15 - mmengine - INFO - Epoch(test) [ 800/4071]    eta: 0:07:17  time: 0.1270  data_time: 0.0079  memory: 1160  
+2023/07/04 15:19:21 - mmengine - INFO - Epoch(test) [ 850/4071]    eta: 0:07:08  time: 0.1199  data_time: 0.0077  memory: 1156  
+2023/07/04 15:19:26 - mmengine - INFO - Epoch(test) [ 900/4071]    eta: 0:06:57  time: 0.1071  data_time: 0.0073  memory: 1065  
+2023/07/04 15:19:32 - mmengine - INFO - Epoch(test) [ 950/4071]    eta: 0:06:47  time: 0.1137  data_time: 0.0073  memory: 1062  
+2023/07/04 15:19:38 - mmengine - INFO - Epoch(test) [1000/4071]    eta: 0:06:39  time: 0.1193  data_time: 0.0074  memory: 1163  
+2023/07/04 15:19:45 - mmengine - INFO - Epoch(test) [1050/4071]    eta: 0:06:35  time: 0.1445  data_time: 0.0075  memory: 1221  
+2023/07/04 15:19:52 - mmengine - INFO - Epoch(test) [1100/4071]    eta: 0:06:29  time: 0.1346  data_time: 0.0074  memory: 1202  
+2023/07/04 15:19:58 - mmengine - INFO - Epoch(test) [1150/4071]    eta: 0:06:20  time: 0.1163  data_time: 0.0075  memory: 1097  
+2023/07/04 15:20:03 - mmengine - INFO - Epoch(test) [1200/4071]    eta: 0:06:12  time: 0.1160  data_time: 0.0074  memory: 1069  
+2023/07/04 15:20:09 - mmengine - INFO - Epoch(test) [1250/4071]    eta: 0:06:03  time: 0.1105  data_time: 0.0071  memory: 1045  
+2023/07/04 15:20:15 - mmengine - INFO - Epoch(test) [1300/4071]    eta: 0:05:56  time: 0.1180  data_time: 0.0072  memory: 1145  
+2023/07/04 15:20:22 - mmengine - INFO - Epoch(test) [1350/4071]    eta: 0:05:50  time: 0.1338  data_time: 0.0075  memory: 1165  
+2023/07/04 15:20:28 - mmengine - INFO - Epoch(test) [1400/4071]    eta: 0:05:43  time: 0.1212  data_time: 0.0075  memory: 1112  
+2023/07/04 15:20:34 - mmengine - INFO - Epoch(test) [1450/4071]    eta: 0:05:36  time: 0.1285  data_time: 0.0075  memory: 1168  
+2023/07/04 15:20:40 - mmengine - INFO - Epoch(test) [1500/4071]    eta: 0:05:30  time: 0.1278  data_time: 0.0076  memory: 1159  
+2023/07/04 15:20:47 - mmengine - INFO - Epoch(test) [1550/4071]    eta: 0:05:23  time: 0.1286  data_time: 0.0075  memory: 1167  
+2023/07/04 15:20:53 - mmengine - INFO - Epoch(test) [1600/4071]    eta: 0:05:17  time: 0.1253  data_time: 0.0078  memory: 1145  
+2023/07/04 15:21:00 - mmengine - INFO - Epoch(test) [1650/4071]    eta: 0:05:11  time: 0.1428  data_time: 0.0077  memory: 1208  
+2023/07/04 15:21:07 - mmengine - INFO - Epoch(test) [1700/4071]    eta: 0:05:06  time: 0.1406  data_time: 0.0077  memory: 1192  
+2023/07/04 15:21:14 - mmengine - INFO - Epoch(test) [1750/4071]    eta: 0:05:00  time: 0.1410  data_time: 0.0077  memory: 1196  
+2023/07/04 15:21:22 - mmengine - INFO - Epoch(test) [1800/4071]    eta: 0:04:54  time: 0.1436  data_time: 0.0079  memory: 1227  
+2023/07/04 15:21:29 - mmengine - INFO - Epoch(test) [1850/4071]    eta: 0:04:49  time: 0.1498  data_time: 0.0079  memory: 1214  
+2023/07/04 15:21:36 - mmengine - INFO - Epoch(test) [1900/4071]    eta: 0:04:43  time: 0.1383  data_time: 0.0080  memory: 1150  
+2023/07/04 15:21:43 - mmengine - INFO - Epoch(test) [1950/4071]    eta: 0:04:37  time: 0.1390  data_time: 0.0080  memory: 1120  
+2023/07/04 15:21:49 - mmengine - INFO - Epoch(test) [2000/4071]    eta: 0:04:30  time: 0.1250  data_time: 0.0077  memory: 1100  
+2023/07/04 15:21:55 - mmengine - INFO - Epoch(test) [2050/4071]    eta: 0:04:23  time: 0.1208  data_time: 0.0080  memory: 1082  
+2023/07/04 15:22:01 - mmengine - INFO - Epoch(test) [2100/4071]    eta: 0:04:16  time: 0.1132  data_time: 0.0079  memory: 1070  
+2023/07/04 15:22:07 - mmengine - INFO - Epoch(test) [2150/4071]    eta: 0:04:09  time: 0.1158  data_time: 0.0081  memory: 1074  
+2023/07/04 15:22:13 - mmengine - INFO - Epoch(test) [2200/4071]    eta: 0:04:02  time: 0.1178  data_time: 0.0080  memory: 1077  
+2023/07/04 15:22:18 - mmengine - INFO - Epoch(test) [2250/4071]    eta: 0:03:54  time: 0.1021  data_time: 0.0081  memory: 1065  
+2023/07/04 15:22:24 - mmengine - INFO - Epoch(test) [2300/4071]    eta: 0:03:47  time: 0.1180  data_time: 0.0080  memory: 1094  
+2023/07/04 15:22:29 - mmengine - INFO - Epoch(test) [2350/4071]    eta: 0:03:40  time: 0.1016  data_time: 0.0078  memory: 1058  
+2023/07/04 15:22:34 - mmengine - INFO - Epoch(test) [2400/4071]    eta: 0:03:33  time: 0.1151  data_time: 0.0078  memory: 1065  
+2023/07/04 15:22:40 - mmengine - INFO - Epoch(test) [2450/4071]    eta: 0:03:26  time: 0.1037  data_time: 0.0080  memory: 1050  
+2023/07/04 15:22:46 - mmengine - INFO - Epoch(test) [2500/4071]    eta: 0:03:20  time: 0.1317  data_time: 0.0079  memory: 1154  
+2023/07/04 15:22:53 - mmengine - INFO - Epoch(test) [2550/4071]    eta: 0:03:13  time: 0.1361  data_time: 0.0080  memory: 1154  
+2023/07/04 15:22:59 - mmengine - INFO - Epoch(test) [2600/4071]    eta: 0:03:07  time: 0.1120  data_time: 0.0080  memory: 1065  
+2023/07/04 15:23:05 - mmengine - INFO - Epoch(test) [2650/4071]    eta: 0:03:00  time: 0.1235  data_time: 0.0081  memory: 1078  
+2023/07/04 15:23:11 - mmengine - INFO - Epoch(test) [2700/4071]    eta: 0:02:54  time: 0.1282  data_time: 0.0079  memory: 1099  
+2023/07/04 15:23:18 - mmengine - INFO - Epoch(test) [2750/4071]    eta: 0:02:48  time: 0.1340  data_time: 0.0080  memory: 1135  

@@ -716,12 +716,7 @@ default_hooks = dict(
     param_scheduler=dict(type='ParamSchedulerHook'),
     checkpoint=dict(type='CheckpointHook', interval=5),
     sampler_seed=dict(type='DistSamplerSeedHook'),
-    visualization=dict(
-        type='Det3DVisualizationHook',
-        draw=True,
-        show=True,
-        wait_time=2,
-        vis_task=None))
+    visualization=dict(type='Det3DVisualizationHook'))
 env_cfg = dict(
     cudnn_benchmark=False,
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0),
