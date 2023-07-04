@@ -721,8 +721,7 @@ default_hooks = dict(
         draw=True,
         show=True,
         wait_time=2,
-        test_out_dir='work_dir/timestamp/show_dir',
-        vis_task='lidar_det'))
+        vis_task=None))
 env_cfg = dict(
     cudnn_benchmark=False,
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0),

@@ -3,7 +3,8 @@
 CONFIG=$1
 CHECKPOINT=$2
 GPUS=$3
-VIZ=${VIZ:"work_dir/timestamp/show_dir"}
+VIZ=${VIZ:-"work_dir/timestamp/show_dir"}
+TASK=${TASK:-"lidar_det"}
 NNODES=${NNODES:-1}
 NODE_RANK=${NODE_RANK:-0}
 PORT=${PORT:-29500}
@@ -22,4 +23,5 @@ python -m torch.distributed.launch \
     --launcher pytorch \
     --show-dir=$VIZ \
     --show \
+    --task=$TASK \
     ${@:4}
